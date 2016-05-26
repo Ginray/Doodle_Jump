@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto/com.ginray"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CircleShowStore"
+    android:background="@drawable/store_bg">
+
+    <com.ginray.view.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"
+        circle:firstChildPosition="South" 
+        circle:rotateToCenter="true" 
+        circle:isRotating="true"
+        android:layout_marginBottom="24dp"
+        android:layout_above="@+id/main_selected_textView"
+        android:layout_centerHorizontal="true">
+
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/bunny_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/bunny_role_l"
+            circle:name="bunny" />
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/doodlestein_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/doodlestein_role_l"
+            circle:name="doodlestein" />
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/ice_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ice_role_l"
+            circle:name="ice" />
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/jungle_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/jungle_role_l"
+            circle:name="jungle" />
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/ninja_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ninja_role_l"
+            circle:name="ninja" />
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/snow_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/snow_role_l"
+            circle:name="snow"/>
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/soccer_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/soccer_role_l"
+            circle:name="soccer"/>
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/space_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/space_role_l"
+            circle:name="space"/>
+
+        <com.ginray.view.CircleImageView
+            android:id="@+id/underwater_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/underwater_role_l"
+            circle:name="underwater" />
+
+    </com.ginray.view.CircleLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/showchose"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="420dp"
+       />
+
+    <TextView
+        android:id="@+id/main_selected_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="108dp"
+        android:text="text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/store_chose"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textColor="#ff0000"
+        android:background="@drawable/startgame"
+        android:textSize="16sp"
+        android:layout_marginBottom="46dp"
+        android:layout_marginStart="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/main_circle_layout" />
+    <Button
+        android:id="@+id/store_menu"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textColor="#ff0000"
+        android:background="@drawable/backtomenu"
+        android:textSize="16sp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignTop="@+id/store_chose"
+        android:layout_alignEnd="@+id/main_circle_layout" />
+
+</RelativeLayout><!-- From: file:/C:/Users/ciabok/Desktop/Doodle_Jump_V3.2/app/src/main/res/layout/circle_show_store.xml -->

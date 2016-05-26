@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/store_bg"
+    >
+
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bunny_role_l"
+        android:id="@+id/bunny"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/underwater" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/doodlestein_role_l"
+        android:id="@+id/doodlestein"
+        android:layout_below="@+id/bunny"
+        android:layout_toStartOf="@+id/ninja" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ice_role_l"
+        android:id="@+id/ice"
+        android:layout_above="@+id/ninja"
+        android:layout_toEndOf="@+id/ninja" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/jungle_role_l"
+        android:id="@+id/jungle"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/bunny" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ninja_role_l"
+        android:id="@+id/ninja"
+        android:layout_alignTop="@+id/space"
+        android:layout_toStartOf="@+id/soccer" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/snow_role_l"
+        android:id="@+id/snow"
+        android:layout_above="@+id/ghost"
+        android:layout_alignStart="@+id/ice" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/soccer_role_l"
+        android:id="@+id/soccer"
+        android:layout_alignTop="@+id/ninja"
+        android:layout_toEndOf="@+id/underwater" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/space_role_l"
+        android:id="@+id/space"
+        android:layout_below="@+id/doodlestein"
+        android:layout_alignStart="@+id/doodlestein" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/underwater_role_l"
+        android:id="@+id/underwater"
+        android:layout_below="@+id/jungle"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout><!-- From: file:/C:/Users/ciabok/Desktop/Doodle_Jump_V3.2/app/src/main/res/layout/store.xml -->

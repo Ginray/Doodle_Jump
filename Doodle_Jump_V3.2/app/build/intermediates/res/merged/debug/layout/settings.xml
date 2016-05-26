@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollview2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingBottom="50dip"
+        android:paddingTop="60dip">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="50dip"
+            android:paddingRight="50dip">
+
+
+            <CheckBox
+                android:id="@+id/settings_vibrate"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:checked="false"
+                android:textSize="18dp"
+                android:text="@string/settings_vibrate_summary"
+                android:textColor="#FFF08080">
+            </CheckBox>
+
+
+            <CheckBox
+                android:id="@+id/settings_sounds"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:textSize="18dp"
+                android:text="@string/settings_sounds_summary"
+                android:textColor="#FFF08080">
+            </CheckBox>
+
+
+            <CheckBox
+                android:id="@+id/settings_showtips"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:textSize="18dp"
+                android:text="@string/settings_showtips_summary"
+                android:textColor="#FFF08080">
+            </CheckBox>
+
+            <TextView
+                android:id="@+id/settings_power_controller_title"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:paddingLeft="33dp"
+                android:paddingTop="13dp"
+                android:text="@string/settings_velocity_controller_summary"
+                android:textColor="#FFF08080"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:layout_marginTop="10dp"
+                android:id="@+id/velocityController"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:max="100"
+                android:progress="40"
+                android:secondaryProgress="0">
+            </SeekBar>
+
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:paddingLeft="33dp"
+                android:id="@+id/settings_best_record_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dip"
+                android:text="@string/settings_best_record_summary"
+                android:textColor="#FFF08080"
+                android:textSize="18sp">
+            </TextView>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:paddingTop="50dp">
+
+                <Button
+                    android:id="@+id/options_tips_button"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+
+                    android:background="@drawable/menu_unselected"
+                    android:text="@string/settings_tips"
+                    android:textColor="#ff0000"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:layout_marginLeft="50dp"
+                    android:id="@+id/options_okay_button"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/menu_unselected"
+                    android:text="@string/settings_ok"
+                    android:textColor="#ff0000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout><!-- From: file:/C:/Users/ciabok/Desktop/Doodle_Jump_V3.2/app/src/main/res/layout/settings.xml -->
