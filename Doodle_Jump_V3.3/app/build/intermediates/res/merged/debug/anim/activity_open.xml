@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:interpolator="@android:anim/accelerate_interpolator"
+
+    android:fromYDelta="100%p"
+
+    android:toYDelta="0%p"
+
+    android:duration="1000">
+s
+</translate><!-- From: file:/C:/Users/ciabok/Desktop/Doodle_Jump_V3.3/app/src/main/res/anim/activity_open.xml -->
