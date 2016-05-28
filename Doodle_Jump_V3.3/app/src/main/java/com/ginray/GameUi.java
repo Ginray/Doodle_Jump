@@ -341,8 +341,12 @@ public class 	GameUi {
 
 
 
+
 		if(FootboardVelocity<0)
 			FootboardVelocity=0;
+
+		mScore+=FootboardVelocity/100;
+
 		if(FootboardVelocity>0) {
 			for (Footboard footboard : mFootboardList) {
 				footboard.addY(FootboardVelocity);
@@ -830,7 +834,7 @@ public class 	GameUi {
 
 
 					} else {
-						mScore += (mLevel+mRan.nextInt(10));
+						//mScore += (mLevel+mRan.nextInt(10));
 						mRoleVelocityY = GAME_ATTRIBUTE_GRAVITY_VELOCITY;
 						role.setVirtualY(footboard.getVirtualY()
 								- ROLE_ATTRIBUTE_HEITH

@@ -587,7 +587,8 @@ public class DoodleJumpView extends SurfaceView implements SurfaceHolder.Callbac
 					} catch (Exception e) {
 						System.out.println("Canvas"+e);
 						Log.e("Canvas", "Error");
-					} finally {						/*
+					} finally {
+						/*
 						 这里会发生ConcurrentModificationException错误而导致c有可能是null；
 						 这个bug调试了一周多，真是醉了；
 						 关于ConcurrentModificationException:
