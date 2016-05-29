@@ -1,6 +1,5 @@
 package com.ginray;
 
-import android.app.Activity;
 import android.util.Log;
 
 import java.util.LinkedList;
@@ -132,13 +131,13 @@ public class 	GameUi {
 	 * 道具属性常量
 	 */
 
-	// 加分物品    在屏幕上的滞留时间，也是食物循环出现的时间间隔
-	public static final int FOOD_ATTRIBUTE_DELAY_TIME = 450;
+	// 怪物   在屏幕上的滞留时间，也是循环出现的时间间隔
+	public static final int MONSTER_ATTRIBUTE_DELAY_TIME = 450;
 
-	public static final int FOOD_SHOW_TIME =10;
+	public static final int MONSTER_SHOW_TIME =10;
 
-	// 加分物品   的大小
-	public static final int FOOD_ATTRIBUTE_IMAGE_SIZE = 24;
+	// 怪物   的大小
+	public static final int MONSTER_ATTRIBUTE_IMAGE_SIZE = 24;
 
 	// 踏板的长宽
 	public static final int BORDER_ATTRIBUTE_IMAGE_HEITH = 60;
@@ -171,16 +170,16 @@ public class 	GameUi {
 	public static final int FOOTBOARD_TYPE_RISE=7; 	   //上下摇晃的踏板
 
 
-	// 加分物品类别
-	public static final int FOOD_NONE = 0;
-	public static final int FOOD_8 = 4;
-	public static final int FOOD_7 = 6;
-	public static final int FOOD_6 = 8;
-	public static final int FOOD_5 = 10;
-	public static final int FOOD_4 = 12;
-	public static final int FOOD_3 = 14;
-	public static final int FOOD_2 = 16;
-	public static final int FOOD_1 = 20;
+		// 怪物类别
+	public static final int MONSTERNONE = 0;
+	public static final int MONSTER_8 = 4;
+	public static final int MONSTER_7 = 6;
+	public static final int MONSTER_6 = 8;
+	public static final int MONSTER_5 = 10;
+	public static final int MONSTER_4 = 12;
+	public static final int MONSTER_3 = 14;
+	public static final int MONSTER_2 = 16;
+	public static final int MONSTER_1 = 20;
 
 
 
@@ -239,8 +238,8 @@ public class 	GameUi {
 	//一Footboard 类为元素创建一个 链表集合，该集合的每一个元素都是一个  Footboard 对象，具有他的属性
 	private LinkedList<Footboard> mFootboardList;
 
-            //定义食物类	
-	private Food mCurFood;
+            //定义怪物类
+	private Monster mCurMonster;
 
 	public GameUi(ScreenAttribute screenAttribute, int addVelocity) {
 
@@ -316,10 +315,10 @@ public class 	GameUi {
 		}
 		
 		/** 
-		 * food 食物的构造函数
-		 * Food(int foodReward, int timeCounter, int x, int y, int size)
+		 * monster 怪物的构造函数
+		 * Monster(int monsterReward, int timeCounter, int x, int y, int size)
 		 */
-		mCurFood = new Food(FOOD_NONE, 0, 0, 0, FOOD_ATTRIBUTE_IMAGE_SIZE);
+		mCurMonster = new Monster(MONSTERNONE, 0, 0, 0, MONSTER_ATTRIBUTE_IMAGE_SIZE);
 	}
 
 
@@ -353,7 +352,7 @@ public class 	GameUi {
 			}
 
 
-			//mCurFood.mMinY-=FootboardVelocity/10;
+			//mCurMonster.mMinY-=FootboardVelocity/10;
 
 
 			FootboardVelocity -= 10;
@@ -376,7 +375,7 @@ public class 	GameUi {
 				else
 					mRole.setRoleStatus(ROLE_STATUS_FREEFALL_RIGHT);
 			}
-			foodboardmoving();
+			footboardmoving();
 			return ;
 		}
 
@@ -410,18 +409,18 @@ public class 	GameUi {
 		handleBorder();
 		//System.out.println("After handleBorder  " + mEffectFlag);
 		handleRoleAction();
-		//handleFood();
+		//handleMonster();
 		//System.out.println("Y is " + mRole.getMinY());
 		screenDecline();
 
-		//generateFood();
-		foodboardmoving();
+		//generateFoot();
+		footboardmoving();
 
 		mFootboardSpaceCounter = mFootboardSpaceCounter + mFootboartVelocity;
 		if (mFootboardSpaceCounter >= mFootboardSpaceFactor) {
 			mFootboardSpaceCounter -= mFootboardSpaceFactor;
 			
-			//随机生成 产生跳板和食物
+			//随机生成 产生跳板和怪物
 			/**
 			 * 
 			 * 随机生成踏板,生成后，就加入到了 跳板 集合链表里面的了
@@ -435,12 +434,8 @@ public class 	GameUi {
 											//为了让屏幕下降的时候不会出现没有踏板的情况，产生的踏板最小需要
 											//是 (弹簧能弹跳的高度+屏幕的高度)/踏板的间隔
 
-			
-			/**
-			 * 随机生成加分物品     只是跟新了食物的 属性！！！   意思就是 没有向跳板那样产生一个新的
-			 * 而只是跟新了或者说是改变了 已有的这个食物的 属性，以改变食物的类型和位置
-			 */
-			//generateFood();
+
+			//generateFoot();
 			
 			//// 游戏等级提升计算器  mLevelUpCounter
 			
@@ -568,82 +563,78 @@ public class 	GameUi {
 
 
 
-	/**
-	 * 随机生成加分物品     只是跟新了食物的 属性！！！   意思就是 没有向跳板那样产生一个新的
-	 * 而只是跟新了或者说是改变了 已有的这个食物的 属性，以改变食物的类型和位置
-	 */
-	private void generateFood() {
 
-		//如果食物的时间间隔还没有到将产生食物
-		//System.out.println("mTimeCounter  "+mCurFood.mTimeCounter);
-		if (mCurFood.mTimeCounter > 0) {
+	private void generateFoot() {
+
+		//System.out.println("mTimeCounter  "+mCurMonster.mTimeCounter);
+		if (mCurMonster.mTimeCounter > 0) {
 
 			return;
 		}
 
 		switch (mRan.nextInt(25)) {
 		case 0:
-			mCurFood.mFoodReward = FOOD_1;
+			mCurMonster.mMonsterReward = MONSTER_1;
 			break;
 		case 1:
-			mCurFood.mFoodReward = FOOD_2;
+			mCurMonster.mMonsterReward = MONSTER_2;
 			break;
 		case 2:
 		case 3:
 		case 4:
-			mCurFood.mFoodReward = FOOD_3;
+			mCurMonster.mMonsterReward = MONSTER_3;
 			break;
 		case 5:
 		case 6:
 		case 7:
-			mCurFood.mFoodReward = FOOD_4;
+			mCurMonster.mMonsterReward = MONSTER_4;
 			break;
 		case 8:
 		case 9:
 		case 10:
-			mCurFood.mFoodReward = FOOD_5;
+			mCurMonster.mMonsterReward = MONSTER_5;
 			break;
 		case 11:
 		case 12:
 		case 13:
-			mCurFood.mFoodReward = FOOD_6;
+			mCurMonster.mMonsterReward = MONSTER_6;
 			break;
 		case 14:
 		case 15:
 		case 16:
 		case 17:
-			mCurFood.mFoodReward = FOOD_7;
+			mCurMonster.mMonsterReward = MONSTER_7;
 			break;
 		case 18:
 		case 19:
 		case 20:
 		case 21:
-			mCurFood.mFoodReward = FOOD_8;
+			mCurMonster.mMonsterReward = MONSTER_8;
 			break;
 		default:
-			mCurFood.mFoodReward = FOOD_NONE;
+			mCurMonster.mMonsterReward = MONSTERNONE;
 			return;
 		}
 
-		mCurFood.mMinX = mRan
-				.nextInt((mScreenAttribute.maxX - FOOD_ATTRIBUTE_IMAGE_SIZE));
-		mCurFood.mMinY = mRan
-				.nextInt((mScreenAttribute.maxY - FOOD_ATTRIBUTE_IMAGE_SIZE));
-		mCurFood.mMaxX = mCurFood.mMinX + FOOD_ATTRIBUTE_IMAGE_SIZE;
-		mCurFood.mMaxY = mCurFood.mMinY + FOOD_ATTRIBUTE_IMAGE_SIZE;
+		mCurMonster.mMinX = mRan
+				.nextInt((mScreenAttribute.maxX - MONSTER_ATTRIBUTE_IMAGE_SIZE));
+		mCurMonster.mMinY = mRan
+				.nextInt((mScreenAttribute.maxY - MONSTER_ATTRIBUTE_IMAGE_SIZE));
+		mCurMonster.mMaxX = mCurMonster.mMinX + MONSTER_ATTRIBUTE_IMAGE_SIZE;
+		mCurMonster.mMaxY = mCurMonster.mMinY + MONSTER_ATTRIBUTE_IMAGE_SIZE;
 
 		// 时间间隔  450
 		// 在屏幕上的滞留时间，
 
 
-		mCurFood.mTimeCounter = FOOD_ATTRIBUTE_DELAY_TIME;
-		mCurFood.mTimeSetter  = FOOD_SHOW_TIME;
+		mCurMonster.mTimeCounter = MONSTER_ATTRIBUTE_DELAY_TIME;
+		mCurMonster.mTimeSetter  = MONSTER_SHOW_TIME;
 }
 
 
 
 
-	private void foodboardmoving() {
+	private void footboardmoving() {
 		if (mFootboartMovingNum > 0) {
 			for (Footboard footboard : mFootboardList) {
 				if (footboard.getType() == FOOTBOARD_TYPE_SHAKE)
@@ -896,18 +887,18 @@ public class 	GameUi {
 	}
 
 
-	//处理食物，碰到食物后，食物消失
-	private void handleFood() {
-		Food food = mCurFood;
-		food.mTimeCounter--;
+	//处理怪物
+	private void handleMonster() {
+		Monster monster = mCurMonster;
+		monster.mTimeCounter--;
 
-		if (food.mFoodReward != FOOD_NONE && food.mTimeCounter > 0) { //判断食物还存
+		if (monster.mMonsterReward != MONSTERNONE && monster.mTimeCounter > 0) {
 			
-			if ((mRole.getMaxX() > food.mMinX && mRole.getMinX() < food.mMaxX)   //判断X轴上 y轴上，有交点
-					&& ( (mRole.getMaxY() >= food.mMinY && mRole.getMaxY() < food.mMaxY)|| (mRole.getMinY() > food.mMinY && mRole.getMinY() <= food.mMaxY))  ) {
+			if ((mRole.getMaxX() > monster.mMinX && mRole.getMinX() < monster.mMaxX)   //判断X轴上 y轴上，有交点
+					&& ( (mRole.getMaxY() >= monster.mMinY && mRole.getMaxY() < monster.mMaxY)|| (mRole.getMinY() > monster.mMinY && mRole.getMinY() <= monster.mMaxY))  ) {
 				mEffectFlag = EFFECT_FLAG_TOOLS;
-				mScore += food.mFoodReward;
-				food.mFoodReward = FOOD_NONE;
+				mScore += monster.mMonsterReward;
+				monster.mMonsterReward = MONSTERNONE;
 			}
 		}
 	}
@@ -947,6 +938,9 @@ public class 	GameUi {
 	/**
 	 * 清除操作
 	 */
+
+
+
 	public void destroy() {
 		mScreenAttribute = null;
 		mRole = null;
@@ -963,8 +957,8 @@ public class 	GameUi {
 		return mFootboardList;
 	}
 
-	public Food getFood() {
-		return mCurFood;
+	public Monster getMonster() {
+		return mCurMonster;
 	}
 
 	public int getEffectFlag() {

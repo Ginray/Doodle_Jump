@@ -173,14 +173,14 @@ public class DoodleJumpView extends SurfaceView implements SurfaceHolder.Callbac
 
 
 
-	private Bitmap mFoodImage1;
-	private Bitmap mFoodImage2;
-	private Bitmap mFoodImage3;
-	private Bitmap mFoodImage4;
-	private Bitmap mFoodImage5;
-	private Bitmap mFoodImage6;
-	private Bitmap mFoodImage7;
-	private Bitmap mFoodImage8;
+	private Bitmap mMonsterImage1;
+	private Bitmap mMonsterImage2;
+	private Bitmap mMonsterImage3;
+	private Bitmap mMonsterImage4;
+	private Bitmap mMonsterImage5;
+	private Bitmap mMonsterImage6;
+	private Bitmap mMonsterImage7;
+	private Bitmap mMonsterImage8;
 
 	private Drawable mTopBarImage;
 	private Drawable mHpBarTotalImage;
@@ -844,35 +844,35 @@ public class DoodleJumpView extends SurfaceView implements SurfaceHolder.Callbac
 						null);
 			}
 
-			Food food = mGameUi.getFood();
-			if (food.mFoodReward != GameUi.FOOD_NONE && food.mTimeCounter > 0) {
-				switch (food.mFoodReward) {
-				case GameUi.FOOD_1:
-					tempBitmap = mFoodImage1;
+			Monster monster = mGameUi.getMonster();
+			if (monster.mMonsterReward != GameUi.MONSTERNONE && monster.mTimeCounter > 0) {
+				switch (monster.mMonsterReward) {
+				case GameUi.MONSTER_1:
+					tempBitmap = mMonsterImage1;
 					break;
-				case GameUi.FOOD_2:
-					tempBitmap = mFoodImage2;
+				case GameUi.MONSTER_2:
+					tempBitmap = mMonsterImage2;
 					break;
-				case GameUi.FOOD_3:
-					tempBitmap = mFoodImage3;
+				case GameUi.MONSTER_3:
+					tempBitmap = mMonsterImage3;
 					break;
-				case GameUi.FOOD_4:
-					tempBitmap = mFoodImage4;
+				case GameUi.MONSTER_4:
+					tempBitmap = mMonsterImage4;
 					break;
-				case GameUi.FOOD_5:
-					tempBitmap = mFoodImage5;
+				case GameUi.MONSTER_5:
+					tempBitmap = mMonsterImage5;
 					break;
-				case GameUi.FOOD_6:
-					tempBitmap = mFoodImage6;
+				case GameUi.MONSTER_6:
+					tempBitmap = mMonsterImage6;
 					break;
-				case GameUi.FOOD_7:
-					tempBitmap = mFoodImage7;
+				case GameUi.MONSTER_7:
+					tempBitmap = mMonsterImage7;
 					break;
-				case GameUi.FOOD_8:
-					tempBitmap = mFoodImage8;
+				case GameUi.MONSTER_8:
+					tempBitmap = mMonsterImage8;
 					break;
 				}
-				canvas.drawBitmap(tempBitmap, food.mMinX, food.mMinY, null);
+				canvas.drawBitmap(tempBitmap, monster.mMinX, monster.mMinY, null);
 			}
 
 			mTopBarImage.setBounds(0, 0,
